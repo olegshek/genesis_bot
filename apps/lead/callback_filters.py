@@ -7,6 +7,7 @@ async def main_menu_filter(message):
 
 
 async def language_choice(message):
-    en_text = (await Button.get(name='en')).text_en
-    ru_text = (await Button.get(name='ru')).text_ru
-    return message.text in [en_text, ru_text]
+    en_text = (await Button.get(code='en')).text_en
+    ru_text = (await Button.get(code='ru')).text_ru
+    uz_text = (await Button.get(code='uz')).text_uz
+    return message.text in [en_text, ru_text, uz_text]

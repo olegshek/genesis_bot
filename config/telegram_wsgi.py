@@ -26,9 +26,9 @@ async def on_shutdown(app):
 
 async def web_app():
     from apps.bot import telegram_views
+    from apps.lead import telegram_views
 
     app = get_new_configured_app(dispatcher=dispatcher, path=f'/telegram/{TELEGRAM_TOKEN}')
     app.on_startup.append(on_startup)
     app.on_shutdown.append(on_shutdown)
     return app
-

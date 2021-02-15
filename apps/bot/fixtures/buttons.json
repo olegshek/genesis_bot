@@ -23,10 +23,11 @@
     "model": "bot.button",
     "pk": 3,
     "fields": {
-      "code": "book",
-      "text": "Book",
-      "text_ru": "Забронировать",
-      "text_en": "Book"
+      "code": "object_choice",
+      "text": "Choose the object",
+      "text_ru": "Выберите объект",
+      "text_en": "Choose the object",
+      "text_uz": "Choose the object"
     }
   },
   {
@@ -80,6 +81,28 @@
       "text_ru": "Узбекский",
       "text_en": "Uzbek",
       "text_uz": "Uzbek tili"
+    }
+  },
+  {
+    "model": "bot.button",
+    "pk": 9,
+    "fields": {
+      "code": "about_company",
+      "text": "About company",
+      "text_ru": "О компании",
+      "text_en": "About company",
+      "text_uz": "About company"
+    }
+  },
+  {
+    "model": "bot.button",
+    "pk": 10,
+    "fields": {
+      "code": "link_with_me",
+      "text": "Link with me",
+      "text_ru": "Свяжитесь со мной",
+      "text_en": "Link with me",
+      "text_uz": "Link with me"
     }
   }
 ]

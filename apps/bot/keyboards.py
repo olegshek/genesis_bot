@@ -2,18 +2,13 @@ from aiogram import types
 
 from apps.bot.tortoise_models import Button, KeyboardButtonsOrdering
 
-checkout_emoji = {
-    'PICKUP': '🏃‍♂️',
-    'DELIVERY': '🚘'
-}
-
 
 async def get_back_button_obj():
-    return await Button.get(name='back')
+    return await Button.get(code='back')
 
 
 async def language_choice(locale='ru', change=False):
-    keyboard = types.InlineKeyboardMarkup(row_width=2)
+    keyboard = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
 
     buttons = []
     for keyboard_button in await KeyboardButtonsOrdering.filter(keyboard__code='language_choice').order_by(
@@ -21,16 +16,12 @@ async def language_choice(locale='ru', change=False):
         button = await keyboard_button.button
         code = button.code
         buttons.append(types.InlineKeyboardButton(
-            (button.text_ru if code == 'ru' else button.text_uz if code == 'uz' else button.text_en),
-            callback_data=button.code
+            button.text_ru if code == 'ru' else button.text_uz if code == 'uz' else button.text_en
         ))
 
     if change:
         back_button_obj = await get_back_button_obj()
-        buttons.append(types.InlineKeyboardButton(
-            getattr(back_button_obj, f'text_{locale}'),
-            callback_data=back_button_obj.code
-        ))
+        buttons.append(types.KeyboardButton(getattr(back_button_obj, f'text_{locale}')))
 
     keyboard.add(*buttons)
     return keyboard

@@ -41,7 +41,7 @@
     "fields": {
       "keyboard": 3,
       "button": 7,
-      "ordering": 1
+      "ordering": 3
     }
   },
   {
@@ -50,6 +50,24 @@
     "fields": {
       "keyboard": 3,
       "button": 8,
+      "ordering": 2
+    }
+  },
+  {
+    "model": "bot.keyboardbuttonsordering",
+    "pk": 7,
+    "fields": {
+      "keyboard": 2,
+      "button": 9,
+      "ordering": 1
+    }
+  },
+  {
+    "model": "bot.keyboardbuttonsordering",
+    "pk": 8,
+    "fields": {
+      "keyboard": 2,
+      "button": 10,
       "ordering": 2
     }
   }
