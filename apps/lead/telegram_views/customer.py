@@ -1,5 +1,6 @@
 from aiogram.types import ContentType
 
+from apps.bot import callback_filters as bot_callback_filters
 from apps.bot import dispatcher as dp
 from apps.bot.telegram_views import send_main_menu
 from apps.bot.tortoise_models import Button
@@ -33,3 +34,15 @@ async def phone_number_save(message, locale, state):
         await customer.save()
 
     await send_main_menu(customer, locale)
+
+
+@dp.message_handler(bot_callback_filters.message_is_not_command, bot_callback_filters.message_is_not_back,
+                    state=CustomerForm.full_name, content_types=[ContentType.TEXT])
+async def full_name_save(message, locale, state):
+    user_id = message.from_user.id
+    customer = await Customer.get(id=user_id)
+    full_name = message.text
+
+    customer.full_name = full_name
+    await customer.save()
+

@@ -1,9 +1,11 @@
 from aiogram import types
 
 from apps.bot import dispatcher as dp, bot, messages, keyboards, callback_filters
+from apps.bot.messages import get_message
 from apps.bot.states import BotForm
-from apps.lead.states import CustomerForm
+from apps.lead.states import CustomerForm, LeadForm
 from apps.lead.tortoise_models import Customer
+from apps.lead.utils import delete_unconfirmed_leads
 
 
 async def send_main_menu(customer, locale):
@@ -45,20 +47,13 @@ async def start(message: types.Message, locale):
 @dp.callback_query_handler(callback_filters.main_menu, state=BotForm.main_menu)
 async def main_menu(query, locale):
     user_id = query.from_user.id
-    await delete_unconfirmed_leads(user_id)
-    if query.data == 'report_a_problem':
-        if await Lead.filter(customer_id=user_id, confirmed_at__gte=timezone.now() - timezone.timedelta(hours=1)):
-            message = get_message('lead_limit', locale)
-            keyboard = keyboards.main_menu(locale)
-            state = BotForm.main_menu
-        else:
-            message = get_message('problem_choice', locale)
-            keyboard = keyboards.problems(locale)
-            state = LeadForm.problem_choice
-    else:
-        message = get_message('language_choice', locale)
-        keyboard = keyboards.language_choice(locale, True)
-        state = CustomerForm.language_choice
 
-    await bot.edit_message_text(await message, user_id, query.message.message_id, reply_markup=await keyboard)
-    await state.set()
+    await delete_unconfirmed_leads(user_id)
+
+    if query.data == 'residence_choice':
+        message = get_message('residence_choice', locale)
+        keyboard = keyboards.residence_choice(locale)
+        state = LeadForm.residence_choice
+
+        await bot.edit_message_text(await message, user_id, query.message.message_id, reply_markup=await keyboard)
+        await state.set()
