@@ -10,6 +10,19 @@ class DescriptionForm(forms.ModelForm):
     description_uz = forms.CharField(required=False)
 
 
+class VideoForm(DescriptionForm):
+    video = forms.FileField()
+
+    def clean_video(self):
+        video = self.cleaned_data['video']
+        file_type = video.name.split('.')[-1]
+
+        if file_type not in ['avi', 'mp4', '3gp']:
+            raise ValidationError('Invalid format')
+
+        return video
+
+
 class ApartmentForm(forms.ModelForm):
     def clean(self):
         data = self.cleaned_data
