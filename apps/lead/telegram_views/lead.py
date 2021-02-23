@@ -1,3 +1,5 @@
+from django.conf import settings
+
 from apps.bot import messages, bot, keyboards
 from apps.bot.telegram_views import send_main_menu
 from apps.bot.utils import try_delete_message
@@ -12,7 +14,9 @@ async def create_lead(user_id, state, locale, message_id=None, text=None):
         apartment_id = data['apartment_id']
 
     lead = await Lead.create(customer_id=user_id, apartment_id=apartment_id)
-    await lead.send_lead_to_bitrix()
+
+    if settings.SEND_TO_BITRIX:
+        await lead.send_lead_to_bitrix()
 
     if state != CustomerForm.full_name.state and message_id:
         await try_delete_message(user_id, message_id)

@@ -1,4 +1,5 @@
 from aiogram.types import ContentType
+from django.conf import settings
 
 from apps.bot import callback_filters as bot_callback_filters, bot, keyboards, messages
 from apps.bot import dispatcher as dp
@@ -12,7 +13,9 @@ from apps.lead.tortoise_models import Customer, Feedback
 
 async def create_feedback(user_id, state, locale, message_id=None):
     feedback = await Feedback.create(customer_id=user_id)
-    await feedback.send_feedback_to_bitrix()
+
+    if settings.SEND_TO_BITRIX:
+        await feedback.send_feedback_to_bitrix()
 
     message_text = await messages.get_message('request_accepted', locale)
 

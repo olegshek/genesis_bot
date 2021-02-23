@@ -203,3 +203,4 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 BITRIX_URL = os.environ['BITRIX_URL']
+SEND_TO_BITRIX = get_env_bool('SEND_TO_BITRIX')
