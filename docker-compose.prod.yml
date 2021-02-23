@@ -1,29 +1,33 @@
 version: "3"
 
 services:
+  db:
+    restart: unless-stopped
+
   nginx:
+    restart: unless-stopped
     volumes:
-      - ./docker/nginx/letsencrypt/fullchain.pem:/etc/letsencrypt/live/${PRODUCTION_HOST}/fullchain.pem
-      - ./docker/nginx/letsencrypt/privkey.pem:/etc/letsencrypt/live/${PRODUCTION_HOST}/privkey.pem
+      - /etc/letsencrypt:/etc/letsencrypt
       - ./media:/app/media:ro
       - ./static:/app/static:ro
     ports:
     - 80:80
     - 443:443
 
+  redis:
+    restart: unless-stopped
+
   genesis:
+    restart: unless-stopped
     volumes:
       - .:/app
-    ports:
-      - 8001:8000
 
   telegram:
+    restart: unless-stopped
     volumes:
       - .:/app
-    ports:
-      - 8000:8000
 
   celery-worker:
+    restart: unless-stopped
     volumes:
       - .:/app
-

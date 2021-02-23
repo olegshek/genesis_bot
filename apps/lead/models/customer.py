@@ -1,6 +1,9 @@
 from django.conf import settings
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+
+from core.utils import generate_number
 
 
 class Customer(models.Model):
@@ -13,3 +16,12 @@ class Customer(models.Model):
     class Meta:
         verbose_name = _('Customer')
         verbose_name_plural = _('Customers')
+
+
+class Feedback(models.Model):
+    number = models.IntegerField(default=generate_number)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='feedback',
+                                 verbose_name=_('Customer'))
+
+    created_at = models.DateTimeField(default=timezone.now, blank=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True)

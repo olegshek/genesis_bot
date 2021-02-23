@@ -6,6 +6,7 @@
       "code": "phone_number",
       "text": "Share my phone number",
       "text_ru": "Отправить мой номер телефона",
+      "text_uz": "Share my phone number",
       "text_en": "Share my phone number"
     }
   },
@@ -16,6 +17,7 @@
       "code": "back",
       "text": "Back",
       "text_ru": "Назад",
+      "text_uz": "Back",
       "text_en": "Back"
     }
   },
@@ -26,8 +28,8 @@
       "code": "object_choice",
       "text": "Choose the object",
       "text_ru": "Выберите объект",
-      "text_en": "Choose the object",
-      "text_uz": "Choose the object"
+      "text_uz": "Choose the object",
+      "text_en": "Choose the object"
     }
   },
   {
@@ -37,6 +39,7 @@
       "code": "accept",
       "text": "Accept",
       "text_ru": "Подтвердить",
+      "text_uz": "Accept",
       "text_en": "Accept"
     }
   },
@@ -47,6 +50,7 @@
       "code": "change_language",
       "text": "Change language",
       "text_ru": "Изменить язык",
+      "text_uz": "Change language",
       "text_en": "Change language"
     }
   },
@@ -57,8 +61,8 @@
       "code": "ru",
       "text": "Русский",
       "text_ru": "Русский",
-      "text_en": "Русский",
-      "text_uz": "Rus tili"
+      "text_uz": "Русский",
+      "text_en": "Русский"
     }
   },
   {
@@ -68,8 +72,8 @@
       "code": "en",
       "text": "English",
       "text_ru": "Английский",
-      "text_en": "English",
-      "text_uz": "Ingliz tili"
+      "text_uz": "English",
+      "text_en": "English"
     }
   },
   {
@@ -79,8 +83,8 @@
       "code": "uz",
       "text": "Uzbek",
       "text_ru": "Узбекский",
-      "text_en": "Uzbek",
-      "text_uz": "Uzbek tili"
+      "text_uz": "Uzbek",
+      "text_en": "Uzbek"
     }
   },
   {
@@ -90,8 +94,8 @@
       "code": "about_company",
       "text": "About company",
       "text_ru": "О компании",
-      "text_en": "About company",
-      "text_uz": "About company"
+      "text_uz": "About company",
+      "text_en": "About company"
     }
   },
   {
@@ -101,8 +105,19 @@
       "code": "link_with_me",
       "text": "Link with me",
       "text_ru": "Свяжитесь со мной",
-      "text_en": "Link with me",
-      "text_uz": "Link with me"
+      "text_uz": "Link with me",
+      "text_en": "Link with me"
+    }
+  },
+  {
+    "model": "bot.button",
+    "pk": 11,
+    "fields": {
+      "code": "lead_request",
+      "text": "Send request",
+      "text_ru": "Отправить заявку",
+      "text_uz": "Send request",
+      "text_en": "Send request"
     }
   }
 ]

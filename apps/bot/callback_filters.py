@@ -3,7 +3,7 @@ from core.callback_filters import callback_filter
 
 
 async def keyboard_back(message):
-    back_button = await Button.get(name='back')
+    back_button = await Button.get(code='back')
     return message.text in [getattr(back_button, f'text_{locale}') for locale in ['ru', 'uz', 'en']]
 
 
@@ -18,7 +18,7 @@ async def message_is_not_command(message):
 
 
 async def message_is_not_back(message):
-    back_button = await Button.get(name='back')
+    back_button = await Button.get(code='back')
     return message.text not in [getattr(back_button, f'text_{locale}') for locale in ['ru', 'uz', 'en']]
 
 

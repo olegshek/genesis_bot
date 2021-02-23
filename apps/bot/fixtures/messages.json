@@ -6,6 +6,7 @@
       "code": "greeting",
       "text": "Welcome",
       "text_ru": "Добро пожаловать",
+      "text_uz": "Welcome",
       "text_en": "Welcome"
     }
   },
@@ -16,6 +17,7 @@
       "code": "phone_number",
       "text": "Share your phone number",
       "text_ru": "Отправьте ваш номер телефона воспользовавшись кнопкой ниже",
+      "text_uz": "Share your phone number",
       "text_en": "Share your phone number"
     }
   },
@@ -26,6 +28,7 @@
       "code": "full_name",
       "text": "Send you full name",
       "text_ru": "Укажите ваше Ф.И.О",
+      "text_uz": "Send you full name",
       "text_en": "Send you full name"
     }
   },
@@ -36,6 +39,7 @@
       "code": "main_menu",
       "text": "Main menu",
       "text_ru": "Вы находитесь в главном меню",
+      "text_uz": "Main menu",
       "text_en": "Main menu"
     }
   },
@@ -46,6 +50,7 @@
       "code": "language_choice",
       "text": "Choose language",
       "text_ru": "Выберите язык",
+      "text_uz": "Choose language",
       "text_en": "Choose language"
     }
   },
@@ -56,7 +61,63 @@
       "code": "press_start",
       "text": "Press /start",
       "text_ru": "Нажмите /start",
+      "text_uz": "Press /start",
       "text_en": "Press /start"
+    }
+  },
+  {
+    "model": "bot.message",
+    "pk": 21,
+    "fields": {
+      "code": "residence_choice",
+      "text": "Choose the object",
+      "text_ru": "Выберите объект",
+      "text_uz": "Choose the object",
+      "text_en": "Choose the object"
+    }
+  },
+  {
+    "model": "bot.message",
+    "pk": 22,
+    "fields": {
+      "code": "room_quantity",
+      "text": "Choose the room quantity",
+      "text_ru": "Выберите количетсво комнат",
+      "text_uz": "Choose the room quantity",
+      "text_en": "Choose the room quantity"
+    }
+  },
+  {
+    "model": "bot.message",
+    "pk": 23,
+    "fields": {
+      "code": "apartment_choice",
+      "text": "Choose the square",
+      "text_ru": "Выберите квадратуру",
+      "text_uz": "Choose the square",
+      "text_en": "Choose the square"
+    }
+  },
+  {
+    "model": "bot.message",
+    "pk": 24,
+    "fields": {
+      "code": "request_accepted",
+      "text": "Request accepted",
+      "text_ru": "Заявка принята",
+      "text_uz": "Request accepted",
+      "text_en": "Request accepted"
+    }
+  },
+  {
+    "model": "bot.message",
+    "pk": 25,
+    "fields": {
+      "code": "request_number",
+      "text": "Request number:",
+      "text_ru": "Номер заявки:",
+      "text_uz": "Request number:",
+      "text_en": "Request number:"
     }
   }
 ]

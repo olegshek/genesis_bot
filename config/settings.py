@@ -201,3 +201,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+
+BITRIX_URL = os.environ['BITRIX_URL']

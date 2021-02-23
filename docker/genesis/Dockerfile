@@ -9,7 +9,8 @@ RUN set -ex \
         libtool libssl-dev build-essential \
         python3-dev python3-virtualenv python3-cffi python3-pip libcairo2 \
         libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev \
-        shared-mime-info
+        shared-mime-info \
+        gettext
 
 COPY . /app/
 

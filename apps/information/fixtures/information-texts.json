@@ -1,0 +1,12 @@
+[
+  {
+    "model": "information.informationtext",
+    "pk": 1,
+    "fields": {
+      "text": "GENESIS",
+      "text_ru": "ГЕНЕЗИС",
+      "text_uz": "GENESIS",
+      "text_en": "GENESIS"
+    }
+  }
+]

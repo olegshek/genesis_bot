@@ -14,7 +14,8 @@ class Localization(I18nMiddleware):
 
         *_, data = args
         if not user:
-            return 'ru'
+            language = data['locale'] = 'ru'
+            return language
 
         customer = await Customer.filter(id=user.id).first()
         language = data['locale'] = customer.language if customer and customer.language else 'ru'
