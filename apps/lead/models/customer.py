@@ -17,6 +17,9 @@ class Customer(models.Model):
         verbose_name = _('Customer')
         verbose_name_plural = _('Customers')
 
+    def __str__(self):
+        return self.full_name if self.full_name else self.phone_number if self.phone_number else self.id
+
 
 class Feedback(models.Model):
     number = models.IntegerField(default=generate_number)

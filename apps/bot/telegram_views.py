@@ -89,13 +89,18 @@ async def send_residence_choice(user_id, message_id, locale):
         is_last = True if residences.index(residence) == residences_len - 1 else False
         keyboard = await keyboards.residence_choice(residence, locale, is_last)
         photo = await residence.photo
+        residence_name = getattr(residence, f'name_{locale}')
+        residence_description = getattr(photo, f'description_{locale}')
+        text = f'<b>{residence_name}</b>\n\n' \
+               f'{residence_description}'
 
         with open(photo.get_path(), 'rb') as photo_data:
             await bot.send_photo(
                 user_id,
                 photo_data,
-                caption=getattr(photo, f'description_{locale}'),
-                reply_markup=keyboard
+                caption=text,
+                reply_markup=keyboard,
+                parse_mode='HTML'
             )
 
     await LeadForm.residence_choice.set()

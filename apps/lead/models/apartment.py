@@ -68,8 +68,8 @@ class Apartment(models.Model):
                                       verbose_name=_('Room quantity'))
     description = models.CharField(max_length=4000, verbose_name=_('Description'))
     photos = models.ManyToManyField(Photo, related_name='apartments', verbose_name=_('Photos'))
-    files = models.ManyToManyField(File, related_name='apartments', verbose_name=_('Files'))
-    videos = models.ManyToManyField(Video, related_name='apartments', verbose_name=_('Videos'))
+    files = models.ManyToManyField(File, blank=True, related_name='apartments', verbose_name=_('Files'))
+    videos = models.ManyToManyField(Video, blank=True, related_name='apartments', verbose_name=_('Videos'))
 
     class Meta:
         verbose_name = _('Apartment')
