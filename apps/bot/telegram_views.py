@@ -190,6 +190,6 @@ async def main_menu(query, locale, state):
 
         keyboard = await keyboards.back_keyboard(locale)
         for text in texts:
-            await bot.send_message(user_id, getattr(text, f'text_{locale}'), reply_markup=keyboard)
+            await bot.send_message(user_id, getattr(text, f'text_{locale}'), reply_markup=keyboard, parse_mode='HTML')
 
         await InformationForm.information_state.set()
