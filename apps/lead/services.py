@@ -22,7 +22,8 @@ async def send_to_bitrix(instance):
             "OPENED": "Y",
             "ASSIGNED_BY_ID": 1,
             "PHONE": [{"VALUE": str(customer.phone_number), "VALUE_TYPE": "MOBILE"}],
-            "COMMENTS": "Просьба связаться с клиентом"
+            "COMMENTS": "Просьба связаться с клиентом",
+            "SOURCE_ID": 11
         }
     }
 
