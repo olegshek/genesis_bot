@@ -3,7 +3,25 @@ from apps.bot.utils import try_delete_message
 from apps.lead import callback_filters
 from apps.lead.states import LeadForm
 from apps.lead.tortoise_models import Apartment, File, LeadApartmentFile, Photo, LeadApartmentPhoto, Video, \
-    LeadApartmentVideo
+    LeadApartmentVideo, Residence
+
+
+async def send_apartment_choice(residence_id, user_id, message_id, locale):
+    residence = await Residence.get(id=residence_id)
+    message_text = await messages.get_message('apartment_choice', locale)
+    keyboard = await keyboards.apartment_choice(residence_id, locale)
+
+    photo = await residence.apartment_choice_photo
+
+    await try_delete_message(user_id, message_id)
+
+    if photo:
+        with open(photo.get_path(), 'rb') as photo_data:
+            await bot.send_photo(user_id, photo_data, message_text, reply_markup=keyboard)
+    else:
+        await bot.send_message(user_id, message_text, reply_markup=keyboard)
+
+    await LeadForm.apartment_choice.set()
 
 
 @dp.callback_query_handler(callback_filters.residence_choice, state=LeadForm.residence_choice.state)
@@ -14,13 +32,7 @@ async def residence_choice(query, state, locale):
     async with state.proxy() as data:
         data['residence_id'] = residence_id
 
-    message = await messages.get_message('room_quantity', locale)
-    keyboard = keyboards.apartment_choice(residence_id, locale)
-
-    await try_delete_message(user_id, query.message.message_id)
-    await bot.send_message(user_id, message, reply_markup=await keyboard)
-
-    await LeadForm.apartment_choice.set()
+    await send_apartment_choice(residence_id, user_id, query.message.message_id, locale)
 
 
 @dp.callback_query_handler(callback_filters.apartment_choice, state=LeadForm.apartment_choice.state)

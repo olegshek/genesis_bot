@@ -41,6 +41,8 @@ class Video(models.Model):
 class Residence(models.Model):
     name = models.CharField(max_length=100, verbose_name=_('Name'))
     photo = models.ForeignKey(Photo, on_delete=models.RESTRICT, related_name='residences', verbose_name=_('Photo'))
+    apartment_choice_photo = models.OneToOneField(Photo, on_delete=models.SET_NULL, related_name='residence', null=True,
+                                                  verbose_name=_('Apartment choice photo'))
 
     class Meta:
         verbose_name = _('Residence')

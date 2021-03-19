@@ -9,6 +9,7 @@ from apps.bot.utils import try_delete_message
 from apps.information.states import InformationForm
 from apps.information.tortoise_models import InformationPhoto, InformationFile, InformationText, InformationVideo
 from apps.lead.states import CustomerForm, LeadForm
+from apps.lead.telegram_views.apartment import send_apartment_choice
 from apps.lead.tortoise_models import Customer, Apartment, Residence
 
 
@@ -34,10 +35,7 @@ async def back(user_id, state, locale, message_id=None):
             async with state.proxy() as data:
                 residence_id = data['residence_id']
 
-            message_text = await messages.get_message('apartment_choice', locale)
-            keyboard = await keyboards.apartment_choice(residence_id, locale)
-            await bot.edit_message_text(message_text, user_id, message_id, reply_markup=keyboard)
-            await LeadForm.apartment_choice.set()
+            await send_apartment_choice(residence_id, user_id, message_id, locale)
 
         if state_name == CustomerForm.full_name.state and user_data == 'lead_request':
             async with state.proxy() as data:

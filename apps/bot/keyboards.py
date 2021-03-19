@@ -62,7 +62,7 @@ async def main_menu(locale):
 
 
 async def residence_choice(residence, locale, is_last=False):
-    button = await Button.get(code='object_choice')
+    button = await Button.get(code='apartment_choice')
     keyboard = types.InlineKeyboardMarkup(row_width=2)
     keyboard.row(
         types.InlineKeyboardButton(getattr(button, f'text_{locale}'), callback_data=f'residence:{residence.pk}')

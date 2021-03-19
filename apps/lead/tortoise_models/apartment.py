@@ -7,7 +7,8 @@ class Residence(models.Model):
     name_en = fields.CharField(max_length=100)
     name_ru = fields.CharField(max_length=100)
     name_uz = fields.CharField(max_length=100)
-    photo = fields.ForeignKeyField(f'{app_name}.Photo', on_delete=fields.CASCADE)
+    photo = fields.ForeignKeyField(f'{app_name}.Photo', on_delete=fields.RESTRICT)
+    apartment_choice_photo = fields.OneToOneField(f'{app_name}.Photo', on_delete=fields.RESTRICT)
 
     class Meta:
         table = f'{app_name}_residence'

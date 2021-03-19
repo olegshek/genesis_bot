@@ -1,0 +1,13 @@
+[
+  {
+    "model": "bot.button",
+    "pk": 12,
+    "fields": {
+      "code": "apartment_choice",
+      "text": "Choose the apartment",
+      "text_ru": "Выберите квартиру",
+      "text_uz": "Choose the apartment",
+      "text_en": "Choose the apartment"
+    }
+  }
+]
