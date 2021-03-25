@@ -43,7 +43,7 @@ async def language_choice_processing(message, locale, state):
     await customer.save()
 
     await bot.send_message(user_id, '✔', reply_markup=keyboards.remove_keyboard)
-    await send_main_menu(customer, locale, state)
+    await send_main_menu(customer, language, state)
 
 
 @dp.message_handler(state=CustomerForm.phone_number, content_types=[ContentType.CONTACT])
